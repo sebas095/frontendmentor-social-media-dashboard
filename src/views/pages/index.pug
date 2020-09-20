@@ -1,3 +1,4 @@
+include ../config/config
 <!DOCTYPE html>
 html(lang="es")
   head
@@ -8,4 +9,36 @@ html(lang="es")
     link(rel="stylesheet", href="css/styles.css")
     title Social Media Dashboard
   body
+    header.header
+      .header__texts
+        h1.header__title Social Media Dashboard
+        p#total-followers.header__subtitle Total Followers: 23.004
+      #switch.switch
+        p#switch-text.switch__text Dark Mode
+        input(type="checkbox" id="switch-input" class="switch__checkbox")
+        label(for="switch-input" id="switch-label" class="switch__label")
+    
+    article.first-row
+      each social in socialNetworks
+        div(class=`card card--${social.title}`)
+          .card__title
+            img(src=`/assets/icons/${social.icon}`, alt=`${social.title}`).card__icon
+            .card__user= social.user 
+          .card__number= social.number 
+          .card__text= social.text
+          div(id=`card-today-${social.title}`).card__today.card__today--up
+            img(src=`assets/icons/${social.todayIcon}`, alt="")
+            span= `${social.today} Today`
+
+    article.second-row
+      h2.second-row__title Overview - Today
+      each overview in overviews
+        .card.card--small
+          .card__title.card__title--small= overview.title
+            img(src=`/assets/icons/${overview.icon}`, alt=`${overview.network}`).card__icon.card__icon--small
+          .card__number.card__number--small= overview.quantity
+          .card__today.card__today--up.card__today--small
+            img(src=`assets/icons/${overview.todayIcon}`, alt="")
+            span= overview.number
+    
     script(src="js/scripts-min.js")
