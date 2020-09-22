@@ -26,7 +26,7 @@ html(lang="es")
             .card__user= social.user 
           .card__number= social.number 
           .card__text= social.text
-          div(id=`card-today-${social.title}`).card__today.card__today--up
+          div(id=`card-today-${social.title}`, class=`card__today card__today--${social.arrow}`)
             img(src=`assets/icons/${social.todayIcon}`, alt="")
             span= `${social.today} Today`
 
@@ -37,7 +37,7 @@ html(lang="es")
           .card__title.card__title--small= overview.title
             img(src=`assets/icons/${overview.icon}`, alt=`${overview.network}`).card__icon.card__icon--small
           .card__number.card__number--small= overview.quantity
-          .card__today.card__today--up.card__today--small
+          div(class=`card__today card__today--${overview.arrow} card__today--small`)
             img(src=`assets/icons/${overview.todayIcon}`, alt="")
             span= overview.number
     
