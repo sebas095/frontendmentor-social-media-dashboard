@@ -22,7 +22,7 @@ html(lang="es")
       each social in socialNetworks
         div(class=`card card--${social.title}`)
           .card__title
-            img(src=`/assets/icons/${social.icon}`, alt=`${social.title}`).card__icon
+            img(src=`assets/icons/${social.icon}`, alt=`${social.title}`).card__icon
             .card__user= social.user 
           .card__number= social.number 
           .card__text= social.text
@@ -35,7 +35,7 @@ html(lang="es")
       each overview in overviews
         .card.card--small
           .card__title.card__title--small= overview.title
-            img(src=`/assets/icons/${overview.icon}`, alt=`${overview.network}`).card__icon.card__icon--small
+            img(src=`assets/icons/${overview.icon}`, alt=`${overview.network}`).card__icon.card__icon--small
           .card__number.card__number--small= overview.quantity
           .card__today.card__today--up.card__today--small
             img(src=`assets/icons/${overview.todayIcon}`, alt="")
