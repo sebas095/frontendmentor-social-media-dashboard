@@ -34,8 +34,24 @@ const changeTheme = (theme) => {
   }
 };
 
+const changeMode = (condition) => {
+  if (condition) {
+    changeTheme(lightTheme);
+    switchText.textContent = "Dark Mode";
+  } else {
+    changeTheme(darkTheme);
+    switchText.textContent = "Light Mode";
+  }
+};
+
 switchInput.addEventListener("click", (e) => {
-  e.target.previousElementSibling.checked
-    ? (changeTheme(lightTheme), (switchText.textContent = "Dark Mode"))
-    : (changeTheme(darkTheme), (switchText.textContent = "Light Mode"));
+  const lightMode = e.target.previousElementSibling.checked;
+  localStorage.setItem("darkMode", JSON.stringify(!lightMode));
+  changeMode(lightMode);
+});
+
+window.addEventListener("load", () => {
+  const darkMode = JSON.parse(localStorage.getItem("darkMode"));
+  switchInput.previousElementSibling.checked = !!darkMode;
+  changeMode(!darkMode);
 });
