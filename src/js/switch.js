@@ -50,7 +50,7 @@ switchInput.addEventListener("click", (e) => {
   changeMode(lightMode);
 });
 
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const darkMode = JSON.parse(localStorage.getItem("darkMode"));
   switchInput.previousElementSibling.checked = !!darkMode;
   changeMode(!darkMode);
